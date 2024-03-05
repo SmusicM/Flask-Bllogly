@@ -1,0 +1,20 @@
+li img{
+    width: 100px;
+    height: 100px;
+}
+
+.user-details-container{
+    padding: 15px;
+}
+
+.user-details ul{
+list-style: none;
+display: inline-block;
+
+}
+
+.userspostsingle{
+    box-sizing: border-box;
+    border: 1px solid black;
+    margin: 10px;
+}

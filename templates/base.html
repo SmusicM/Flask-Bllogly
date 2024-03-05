@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/app.css">
+    <title>{% block title %}{%endblock%}</title>
+</head>
+<body>
+    <main id="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <div>
+        <ul>
+            <li> <a href="/users/new">ADD/CRREATE NEW USER</a></li>
+            <li><a href="/users">SEE USERS</a></li>
+            <li> <a href="/post/all">see all users post</a></li>
+            <li><a href="/tags">all tags</a></li>
+            <li><a href="/tags/new">new tag</a></li>
+            <li></li>
+        </ul>
+       
+        
+       
+    </div>
+</body>
+</html>
+

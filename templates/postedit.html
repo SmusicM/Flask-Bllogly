@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}edit post{%endblock%}
+{% block content %}
+<h1>{{post.user.first_name ~ ' '~ post.user.last_name}} Details</h1>
+    <ul>
+        <li>ID: {{post.user.id}}</li>
+        <li>Name: {{post.user.first_name ~ ' ' ~ post.user.last_name}}</li>
+        <li>Image: <img src="{{post.user.image_url}}" alt=""></li>
+    </ul>
+
+    <div class="userspostsingle">
+        <h5>{{post.title}}</h5>
+        <p>{{post.content}}</p>
+        <span>{{post.created_at}}</span>
+        <span>created by: <a href="/users/{{post.user.id}}">{{post.user.first_name ~ ' ' ~ post.user.last_name}}</a> </span>
+        <div>
+            {% if post.tags%}
+            <div>
+                <p>POST TAGS:</p>
+                <ul>
+                {%for tag in post.tags%}
+                 <li>
+                    <input type="checkbox" name="tag" value="tag.id" checked>
+                    <a href="/tags/{{tag.id}}">{{tag.name}}</a>
+                </li>
+                {%endfor%}
+                </ul>
+            </div>
+            {%endif%}
+        </div>
+    </div>
+
+
+
+
+    <form action="/post/{{post.id}}/edit" method="POST">                       
+        <input type="text" name="title" placeholder="{{post.title}}">
+        <input type="text" name="content" placeholder="{{post.content}}">
+        <div class="add-new-tags">
+        <p>Add tags</p>
+         <ul>
+         {% for tag in tags %}
+           <li>
+            <input type="checkbox" name = "tag" value="{{tag.id}}"><label>{{tag.name}}</label>
+           </li>
+         {% endfor %}
+         </ul>
+        </div>
+        <button>Update Post</button>
+    </form>
+    <form action="/post/{{post.id}}"> <button>cancel</button></form>
+   
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}user details{%endblock%}
+
+{% block content %}
+
+<h1>Our Users Details page!</h1>
+<div class="user-details-container">
+    {%for user in users%}
+    <div class="user-details">
+    <ul>
+        
+        <li>ID: {{user.id}}</li>
+        <li>Name: {{user.first_name ~ ' ' ~ user.last_name}}</li>
+        <li> <img src="{{user.image_url}}" alt=""></li>
+        <li><a href="/users/{{user.id}}">go to profile</a></li>
+        
+    </ul>
+    </div>
+    {%endfor%}
+</div>
+    <a href="/">Go Back</a>
+{% endblock %}
+
+    

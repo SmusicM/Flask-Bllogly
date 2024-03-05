@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}single user{%endblock%}
+
+{% block content %}
+<h1>{{user.first_name ~ ' '~ user.last_name}} Details</h1>
+    <ul>
+        <li>ID: {{user.id}}</li>
+        <li>Name: {{user.first_name ~ ' ' ~ user.last_name}}</li>
+        <li>Image: <img src="{{user.image_url}}" alt=""></li>
+    </ul>
+
+    <form action="/users/{{user.id}}/edit" >
+        <button>EDIT PROFILE</button>
+    </form>
+    
+
+    <form action="/users/{{user.id}}/delete" method="POST">
+        <button>DELETE ACCOUNT</button>
+    </form>
+    
+    <form action="/users/{{user.id}}/post/new">
+        <button>ADD POST</button>
+    </form>
+    <div>
+        <h6>Post By  {{user.first_name}}</h6>
+      <ul>
+          {% for post in user.posts %}
+          <li><a href="/post/{{post.id}}">{{post.title}}</a></li>
+          {%endfor%}
+      </ul>
+    </div>
+
+    <a href="/users">Go Back</a>
+{% endblock %}
+    

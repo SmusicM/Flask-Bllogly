@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}all post{%endblock%}
+
+{% block content %}
+
+<h1>Our Users Post page!</h1>
+<div class="user-details-container">
+    {% for posts in post%}
+    <div class="userspostsingle">
+    <ul> 
+        <li>{{posts.user.first_name ~ ' ' ~ posts.user.last_name}}</li>
+        <li> <img src="{{posts.user.image_url}}" alt=""></li>
+        <li><a href="/users/{{posts.user.id}}">go to profile</a></li>
+    </ul>
+    <div>
+        <h5>{{posts.title}}</h5>
+        <p>{{posts.content}}</p>
+        <span>{{posts.created_at}}</span>
+        <span>created by: <a href="/users/{{posts.user.id}}">{{posts.user.first_name ~ ' ' ~ posts.user.last_name}}</a> </span>
+        {% if posts.tags%}
+        <div>
+            <p>POST TAGS:</p>
+            <ul>
+            {%for tag in posts.tags%}
+             <li><a href="/tags/{{tag.id}}">{{tag.name}}</a></li>
+            {%endfor%}
+            </ul>
+        </div>
+        {%endif%}
+    </div>
+    </div>
+    {%endfor%}
+</div>
+    <a href="/">Go Back</a>
+{% endblock %}
